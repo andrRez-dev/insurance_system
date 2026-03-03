@@ -52,40 +52,37 @@
 
 @include('layouts.app')
 
-<div class="mt-2">
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OwnerModal" alt="">Add Owner</button>
-</div>
+<h1 class="text-center">Owners</h1>
+    <div class="mt-2 ms-4">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OwnerModal" alt="">Add Owner</button>
+        <table class="table table-hover text-center border border-light border-4" style="width: 79%;">
+            <thead class="table-info">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($owners as $owner)
+                <tr>
+                    <td>{{ $owner->id }}</td>
+                    <td>{{ $owner->name }}</td>
+                    <td>{{ $owner->surname }}</td>
+                    <td class="text-end">
+                        <a class="me-1 btn btn-warning" href="/owner/edit/{{$owner->id}}"><i class="fa-solid fa-pen"></i>Edit</a>
+                        <a class="btn btn-danger" href="/owner/delete/{{$owner->id}}" onclick="return confirm('Confirm deletion?')"><i class="fa-solid fa-trash"></i>Delete</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+            <tfoot class="table-primary">
+                <tr>
+                    <td colspan="10"></td>
+                </tr>
+            </tfoot>
+        </table>
 
+    </div>
 
-<table class="table table-hover text-center ms-3 border border-light border-4" style="width: 79%;">
-        <thead class="table-info">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($owners as $owner)
-            <tr>
-                <td>{{ $owner->id }}</td>
-                <td>{{ $owner->name }}</td>
-                <td>{{ $owner->surname }}</td>
-                <td class="text-end">
-                    <a class="me-1 text-warning" href="/owner/edit/{{$owner->id}}"><i class="fa-solid fa-pen"></i>Edit</a>
-                    <a class="text-danger"href="/owner/delete/{{$owner->id}}" onclick="return confirm('Confirm deletion?')"><i class="fa-solid fa-trash"></i>Delete</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-        <tfoot class="table-primary">
-            <tr>
-                <td colspan="10"></td>
-            </tr>
-        </tfoot>
-    </table>
-
-
-
-</div>

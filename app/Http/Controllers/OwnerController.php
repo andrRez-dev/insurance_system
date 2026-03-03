@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-use App\Models\Owners;
+use App\Models\Owner;
 
 class OwnerController extends Controller
 {
-    public function __construct(Owners $ownerModel){
+    public function __construct(Owner $ownerModel){
         $this->ownerModel = $ownerModel;
     }
 
     public function getData(): View{
         $owners = $this->ownerModel->all();
 
-        return view('home', [
+        return view('owners', [
             'owners' => $owners
         ]);
     }
@@ -42,7 +42,7 @@ class OwnerController extends Controller
             'owner_name' => 'required|string',
             'owner_surname' => 'required|string'
             ]);
-            $this->ownerModel = Owners::find($id);
+            $this->ownerModel = Owner::find($id);
             $this->ownerModel->name = $req->input('owner_name');
             $this->ownerModel->surname = $req->input('owner_surname');
             $this->ownerModel->save();
