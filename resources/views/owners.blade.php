@@ -54,14 +54,18 @@
 
 <h1 class="text-center">Owners</h1>
     <div class="mt-2 ms-4">
+        @if(Auth::user()->type == 'admin')
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OwnerModal" alt="">Add Owner</button>
+        @endif
         <table class="table table-hover text-center border border-light border-4" style="width: 79%;">
             <thead class="table-info">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Surname</th>
+                    @if(Auth::user()->type == 'admin')
                     <th>Actions</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -70,10 +74,12 @@
                     <td>{{ $owner->id }}</td>
                     <td>{{ $owner->name }}</td>
                     <td>{{ $owner->surname }}</td>
+                    @if(Auth::user()->type == 'admin')
                     <td class="text-end">
                         <a class="me-1 btn btn-warning" href="/owner/edit/{{$owner->id}}"><i class="fa-solid fa-pen"></i>Edit</a>
                         <a class="btn btn-danger" href="/owner/delete/{{$owner->id}}" onclick="return confirm('Confirm deletion?')"><i class="fa-solid fa-trash"></i>Delete</a>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

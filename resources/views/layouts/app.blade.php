@@ -29,6 +29,9 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                     @guest
+
+                     @else
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('owners') }}">Owners</a>
@@ -37,6 +40,7 @@
                             <a class="nav-link" href="{{ route('cars.index') }}">Cars</a>
                         </li>
                     </ul>
+                    @endguest
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

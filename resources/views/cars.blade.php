@@ -73,7 +73,9 @@
 
 <h1 class="text-center">Cars</h1>
     <div class="mt-2 ms-4">
+        @if(Auth::user()->type == 'admin')
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#CarModal" alt="">Add Car</button>
+        @endif
         <table class="table table-hover text-center border border-light border-4" style="width: 79%;">
             <thead class="table-info">
                 <tr>
@@ -82,7 +84,9 @@
                     <th>Registration number</th>
                     <th>Brand</th>
                     <th>Model</th>
+                    @if(Auth::user()->type == 'admin')
                     <th>Actions</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -93,6 +97,7 @@
                     <td>{{ $car->reg_number }}</td>
                     <td>{{ $car->brand }}</td>
                     <td>{{ $car->model }}</td>
+                    @if(Auth::user()->type == 'admin')
                     <td class="d-flex" style="height: 50px;">
                         <a class="me-1 btn btn-warning" href="/cars/{{$car->id}}/edit"><i class="fa-solid fa-pen"></i>Edit</a>
                         <form action="{{ route('cars.destroy', $car->id) }}" method="POST">
@@ -101,6 +106,7 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

@@ -36,7 +36,7 @@
                 </div>  
         </div>
         <div class="m-3 mt-4">
-            <button type="button" class="btn btn-danger" onclick="window.location.href='/home';">Close</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='/';">Close</button>
             <button type="submit" class="btn btn-success">Save changes</button>
         </div>
     </form>
